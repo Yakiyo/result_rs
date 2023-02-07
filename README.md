@@ -1,3 +1,3 @@
 # result-rs
 
-Rust's Result implementation in Javascript
+Rust's Result struct ported to Typescript/Javascript

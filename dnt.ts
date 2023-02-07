@@ -20,9 +20,9 @@ await build({
 	},
 	package: {
 		// package.json properties
-		name: 'your-package',
+		name: 'result-rs',
 		version,
-		description: 'Your package.',
+		description: 'Rust\'s Result struct ported to Typescript/Javascript',
 		license: 'MIT',
 		repository: {
 			type: 'git',
