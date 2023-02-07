@@ -1,0 +1,20 @@
+{
+	"lint": {
+		"files": {
+			"include": [
+				"./mod.ts"
+			]
+		}
+	},
+	"fmt": {
+		"options": {
+			"useTabs": true,
+			"lineWidth": 70,
+			"singleQuote": true
+		}
+	},
+	"tasks": {
+		"fix": "deno fmt && deno lint",
+		"npm": "deno run -A ./dnt.ts"
+	}
+}
