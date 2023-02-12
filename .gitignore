@@ -1,1 +1,5 @@
+# DNT build files
 npm/
+
+# Deno lock files
+deno.lock
