@@ -22,7 +22,8 @@ await build({
 		// package.json properties
 		name: 'result-rs',
 		version,
-		description: 'Rust\'s Result struct ported to Typescript/Javascript',
+		description:
+			'Rust\'s Result struct ported to Typescript/Javascript',
 		license: 'MIT',
 		repository: {
 			type: 'git',
