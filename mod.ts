@@ -1,5 +1,1 @@
-export class Result<T, E> {
-	private constructor() {}
-
-	public from() {}
-}
+export * from './src/result.ts';
