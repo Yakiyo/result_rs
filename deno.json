@@ -4,6 +4,9 @@
 			"include": [
 				"./"
 			]
+		},
+		"rules": {
+			"exclude": ["no-namespace", "no-explicit-any"]
 		}
 	},
 	"fmt": {
