@@ -50,4 +50,105 @@ export interface Variant<T, E> {
 	 * Maps a Result<T, E> to Result<T, F> by applying a function to a contained Err value, leaving an Ok value untouched.
 	 */
 	map_err<F>(f: (v: E) => F): Result<T, F>;
+
+	/**
+	 * Calls the provided closure with a reference to the contained value (if Ok).
+	 */
+	inspect(f: (v: T) => any): this;
+
+	/**
+	 * Calls the provided closure with a reference to the contained error (if Err).
+	 */
+	inspect_err(f: (v: E) => any): this;
+
+	/**
+	 * Returns an iterator over the possibly contained value.
+	 * The iterator yields one value if the result is Result::Ok, otherwise none.
+	 */
+	iter(): Generator<T>;
+
+	/**
+	 * Returns the contained value (if Ok) else throws an error with the message provided
+	 */
+	expect(msg: string): T;
+
+	/**
+	 * Returns the contained value (if Ok) else throws the contained error
+	 */
+	unwrap(): T;
+
+	/**
+	 * Returns the contained value (if Ok) else the default value
+	 */
+	unwrap_or_default<V>(def: V): T | V;
+
+	/**
+	 * Returns the contained error (if Err) else throws an error with the message provided
+	 */
+	expect_err(msg: string): E;
+
+	/**
+	 * Returns the contained error (if Err) else throws the contained value
+	 */
+	unwrap_err(): E;
+
+	/**
+	 * Returns the contained value (if Ok) else undefined
+	 */
+	into_ok(): T | undefined;
+
+	/**
+	 * Returns the contained error (if Err) else undefined
+	 */
+	into_err(): T | undefined;
+
+	/**
+	 * Returns res if Ok else a new Err variant of the contained error
+	 */
+	and<R>(res: Result<R, E>): Result<R, E>;
+
+	/**
+	 * Calls the predicate if Ok else returns a new Err variant of the contained error
+	 */
+	and_then<U>(f: (v: T) => Result<U, E>): Result<U, E>;
+
+	/**
+	 * Returns res if Err else returns a new Ok variant of the contained value
+	 */
+	or<R>(res: Result<T, R>): Result<T, R>;
+
+	/**
+	 * Calls the predicate if Err else returns a new Ok variant of the contained value
+	 */
+	or_else<R>(f: (v: E) => Result<T, R>): Result<T, R>;
+
+	/**
+	 * Returns the contained Ok value or a provided default
+	 */
+	unwrap_or<U>(def: U): T | U;
+
+	/**
+	 * Returns the contained Ok value or computes it from a closure.
+	 */
+	unwrap_or_else<U>(f: (v: E) => U): T | U;
+
+	/**
+	 * Returns the Ok value without checking that the value is not Err
+	 */
+	unwrap_unchecked(): T;
+
+	/**
+	 * Returns the Err value without checking that the value is not Ok
+	 */
+	unwrap_err_unchecked(): E;
+
+	/**
+	 * Boolean indicating wether the Result is an Ok containing the provided value
+	 */
+	contains(v: T): boolean;
+
+	/**
+	 * Boolean indicating wether the Result is an Err containing the provided value
+	 */
+	contains_err(v: E): boolean;
 }
