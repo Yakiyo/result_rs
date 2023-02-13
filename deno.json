@@ -2,7 +2,7 @@
 	"lint": {
 		"files": {
 			"include": [
-				"./mod.ts"
+				"./"
 			]
 		}
 	},
