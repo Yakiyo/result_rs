@@ -1,3 +1,6 @@
+/**
+ * A Result class
+ */
 export class Result<T, E> {
 	private value: T | E;
 	private _ok: boolean;
@@ -12,10 +15,25 @@ export class Result<T, E> {
 		}
 	}
 
+	/**
+	 * Create a new Result instance from a function
+	 */
 	static from<T, E = unknown>(f: () => T) {
 		return new Result<T, E>(f);
 	}
 
+	/**
+	 * Method to resolve value if it is a promise.
+	 *
+	 * This method is useful when the original function provided returns a promise,
+	 * it internally resolves the value's promise.
+	 */
+	async sync() {
+		if (this.value instanceof Promise) {
+			this.value = await this.value;
+		}
+		return this;
+	}
 	/**
 	 * Returns true if result is Ok
 	 */
@@ -241,10 +259,16 @@ export class Result<T, E> {
 	}
 }
 
+/**
+ * Utility function to generate a result from a Ok value
+ */
 export function Ok<T, E = unknown>(v: T) {
 	return Result.from<T, E>(() => v);
 }
 
+/**
+ * Utility function to generate a result from an Error value
+ */
 export function Err<E, T = unknown>(e: E) {
 	return Result.from<T, E>(() => {
 		throw e as E;
