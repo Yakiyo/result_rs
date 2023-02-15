@@ -14,6 +14,7 @@ await emptyDir('./npm');
 await build({
 	entryPoints: ['./mod.ts'],
 	outDir: './npm',
+	packageManager: 'pnpm',
 	shims: {
 		// see JS docs for overview and more options
 		deno: true,
@@ -27,11 +28,12 @@ await build({
 		license: 'MIT',
 		repository: {
 			type: 'git',
-			url: 'git+https://github.com/Yakiyo/result-rs.git',
+			url: 'git+https://github.com/Yakiyo/result_rs.git',
 		},
 		bugs: {
-			url: 'https://github.com/Yakiyo/result-rs/issues',
+			url: 'https://github.com/Yakiyo/result_rs/issues',
 		},
+		keywords: ['deno', 'dnt', 'result', 'rust'],
 	},
 });
 
