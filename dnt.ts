@@ -28,11 +28,12 @@ await build({
 		license: 'MIT',
 		repository: {
 			type: 'git',
-			url: 'git+https://github.com/Yakiyo/result-rs.git',
+			url: 'git+https://github.com/Yakiyo/result_rs.git',
 		},
 		bugs: {
-			url: 'https://github.com/Yakiyo/result-rs/issues',
+			url: 'https://github.com/Yakiyo/result_rs/issues',
 		},
+		keywords: ['deno', 'dnt', 'result', 'rust']
 	},
 });
 
