@@ -21,5 +21,10 @@
 		"npm": "deno run -A ./dnt.ts",
 		"husky": "deno run -A npm:husky",
 		"prepare": "deno task husky install"
+	},
+	"test": {
+		"files": {
+			"include": ["./test.ts"]
+		}
 	}
 }
