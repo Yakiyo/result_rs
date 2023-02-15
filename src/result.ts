@@ -12,7 +12,7 @@ export class Result<T, E> {
 		}
 	}
 
-	static from<T, E>(f: () => T) {
+	static from<T, E = unknown>(f: () => T) {
 		return new Result<T, E>(f);
 	}
 
@@ -32,17 +32,19 @@ export class Result<T, E> {
 		return this.is_err() && f(this.value as E);
 	}
 
+	// TODO: Use Options
 	ok() {
 		return this.is_ok() ? this.value : null;
 	}
 
+	// TODO: Use Options
 	err() {
 		return this.is_err() ? this.value : null;
 	}
 
 	map<U>(f: (t: T) => U) {
 		return this.is_err()
-			? Err<U, E>(this.value as E)
+			? Err<E, U>(this.value as E)
 			: Ok<U, E>(f(this.value as T));
 	}
 
@@ -60,7 +62,7 @@ export class Result<T, E> {
 	map_err<O>(f: (t: E) => O) {
 		return this.is_ok()
 			? Ok<T, O>(this.value as T)
-			: Err<T, O>(f(this.value as E));
+			: Err<O, T>(f(this.value as E));
 	}
 
 	inspect(f: (t: T) => void) {
@@ -102,13 +104,59 @@ export class Result<T, E> {
 		if (this.is_err()) return this.value as E;
 		throw this.value as T;
 	}
+
+	into_ok() {
+		if (this.is_ok()) return this.value as T;
+	}
+
+	into_err() {
+		if (this.is_err()) return this.value as E;
+	}
+
+	and<U>(res: Result<U, E>) {
+		if (this.is_ok()) return res;
+		return Err<E, U>(this.value as E);
+	}
+
+	and_then<U>(f: () => Result<U, E>) {
+		if (this.is_ok()) return f();
+		return Err<E, U>(this.value as E);
+	}
+
+	or<F>(res: Result<T, F>) {
+		if (this.is_err()) return res;
+		return Ok<T, F>(this.value as T);
+	}
+
+	or_else<F>(f: (t: E) => Result<T, F>) {
+		if (this.is_err()) return f(this.value as E);
+		return Ok<T, F>(this.value as T);
+	}
+
+	unwrap_or<U>(def: U) {
+		if (this.is_ok()) return this.unwrap();
+		return def;
+	}
+
+	unwrap_or_else<U>(f: (t: T) => U) {
+		if (this.is_ok()) return this.unwrap();
+		return f(this.value as T);
+	}
+
+	contains(x: T) {
+		return this.is_ok() && this.value === x;
+	}
+
+	contains_err(e: E) {
+		return this.is_err() && this.value === e;
+	}
 }
 
-export function Ok<T, E>(v: T) {
+export function Ok<T, E = unknown>(v: T) {
 	return Result.from<T, E>(() => v);
 }
 
-export function Err<T, E>(e: E) {
+export function Err<E, T = unknown>(e: E) {
 	return Result.from<T, E>(() => {
 		throw e as E;
 	});
