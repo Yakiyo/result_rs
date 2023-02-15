@@ -1,4 +1,4 @@
-# result-rs <img src="https://github.com/Yakiyo/result-rs/actions/workflows/ci.yml/badge.svg">
+# result-rs <img src="https://github.com/Yakiyo/result_rs/actions/workflows/ci.yml/badge.svg">
 
 Rust's [Result](https://doc.rust-lang.org/std/result/enum.Result.html)
 enum ported to Typescript/Javascript
@@ -8,10 +8,10 @@ enum ported to Typescript/Javascript
 Import the module to your code:
 
 ```ts
-import { Result } from 'https://deno.land/x/result-rs/mod.ts';
+import { Result } from 'https://deno.land/x/result_rs/mod.ts';
 ```
 
-It is also published as a [npm](npmjs.com/) module too.
+It is also published as a [npm](npmjs.com/) module as result-rs.
 
 ```bash
 $ npm i result-rs
@@ -71,7 +71,7 @@ result.unwrap(); // 'Hello World'
 ```
 
 Documentation of all methods is available
-[here](https://deno.land/x/result-rs?doc).
+[here](https://deno.land/x/result_rs?doc).
 
 ## Author
 
