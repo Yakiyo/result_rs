@@ -45,7 +45,7 @@ useful to create Ok or Err values from simple values instead of a
 function
 
 ```ts
-import { Err, Ok } from 'https://deno.land/x/result-rs/mod.ts';
+import { Err, Ok } from 'https://deno.land/x/result_rs/mod.ts';
 
 const ok = Ok('Hello World');
 
