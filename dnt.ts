@@ -33,7 +33,7 @@ await build({
 		bugs: {
 			url: 'https://github.com/Yakiyo/result_rs/issues',
 		},
-		keywords: ['deno', 'dnt', 'result', 'rust']
+		keywords: ['deno', 'dnt', 'result', 'rust'],
 	},
 });
 
