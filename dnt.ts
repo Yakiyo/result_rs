@@ -21,7 +21,7 @@ await build({
 	},
 	package: {
 		// package.json properties
-		name: 'result-rs',
+		name: 'result_rs',
 		version,
 		description:
 			'Rust\'s Result struct ported to Typescript/Javascript',
