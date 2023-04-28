@@ -11,23 +11,23 @@ Import the module to your code:
 import { Result } from 'https://deno.land/x/result_rs/mod.ts';
 ```
 
-It is also published as a [npm](npmjs.com/) module as result-rs.
+It is also published as a [npm](npmjs.com/) module as result_rs.
 
 ```bash
-$ npm i result-rs
+$ npm i result_rs
 # or using pnpm
-$ pnpm add result-rs
+$ pnpm add result_rs
 # or yarn
-$ yarn add result-rs
+$ yarn add result_rs
 ```
 
 Then you can import it in your code:
 
 ```ts
 // Commonjs require
-const { Result } = require('result-rs');
+const { Result } = require('result_rs');
 // ES Module import
-import { Result } from 'result-rs';
+import { Result } from 'result_rs';
 ```
 
 ## Usage
